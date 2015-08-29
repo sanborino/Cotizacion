@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+Impresion PDF
+{% endblock %}
+
+{% block content %}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Cotización</h3>
+                    </div>
+
+                    <table style="width:100%">
+                          <tr style="height: 100px">
+                            <td>{{Saludo}}<br>
+                                            {{c.cliente}}</td>
+                            <td align="right">{{c.empresa}}<br>
+                                {{c.fechaInicial}}</td>      
+                          </tr>
+                          
+                    </table>
+                </div>
+        
+            <h5>Ponemos a su disposición la siguiente cotización, esperando poder servirle como se merece:</h5>
+            <table style="width:100%">
+                <div class="col-lg-12">
+                        <h3 class="page-header">&nbsp;</h3>
+                    </div>
+                          <tr>
+                            <td style="width:180px">Platillos a su disposición: <br><br>
+                            {% for platillo in c.receta.all %}
+                              {{platillo.nombre}}
+                              {{platillo.venta}}<br>
+                            {% endfor %}</td>
+                          </tr><br>
+                         
+                            <td style="width:180px">Observaciones: </td>
+                            <td align="left">{{c.descripcion}}</td>     
+                          </tr>
+                          </table><br><br>
+                          <table style="width:100%">
+                          <tr>
+                            <td style="width:280px">La fecha de vencimiento de la cotizacion es: </td>
+                            <td align="left">{{c.fechaFinal}}</td>
+                          </tr>
+                          
+                    </table>
+                    <div class="col-lg-12">
+                        <h3 class="page-header">&nbsp;</h3>
+                    </div>
+                    <h5>Le recordamos que solo se aceptan pagos en efectivo o tarjeta de crédito y/o debito</h5>
+                     <table style="width:100%">
+
+                        <tr style="height: 200px"><td>Atentamente</td></tr>
+                        <tr><td>_________________________</td></tr>
+                        <tr><td>Gerente de Restaurante</td></tr>
+                     </table><br><br>
+                     <p>Dirección: {{c.empresa.direccion}}, Teléfono: {{c.empresa.telefono}}, Email: {{c.empresa.correo}}</p>
+                    
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}

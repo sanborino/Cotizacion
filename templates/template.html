@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="{% static 'css/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css' %}" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="{% static 'css/bower_components/datatables-responsive/css/dataTables.responsive.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'css/bower_components/metisMenu/dist/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/dist/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/menu/" class="navbar-brand">Ingreso Usuario: {{user.username}}</a>
+
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-left">
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/cerrar/">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="/perfil/"><i class="fa fa-user fa-fw"></i> Perfil del usuario</a>
+                        </li>
+                        <li><a href="/password/"><i class="fa fa-gear fa-fw"></i> Cambio de password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/cerrar/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+             
+            <ul class="nav navbar-top-links navbar-right">
+            <h5>Sistema para cotizaciones de restaurante DETEC</h5>
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        
+                        {% if user.is_staff and user.is_superuser %}
+                            
+                        <li>
+                            <a href="#"><i class="fa fa-mortar-board"></i> Administración<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                        </li>
+                        <li>
+                            <a href="/registrarse/"><i class="fa fa-user fa-fw"></i> Usuarios<span></span></a>
+                        </li>
+
+                        <li>
+                            <a href="#" ><i class="fa fa-cutlery fa-fw"></i> Datos<span class="fa arrow"></span></a>
+                             <ul class="nav nav-third-level">
+                        </li>
+                        <li>
+                            <a href="/administracion/catalogoI/"><i ></i>Catálogo de ingredientes<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/administracion/ingrediente/"><i ></i>Captura de Ingrediente<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/administracion/evento/"><i ></i> Tipo de evento<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/administracion/receta/"><i ></i> Receta<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/administracion/catalogoR/"><i ></i>Catálogo de recetas<span></span></a>
+                        </li>
+                        </ul>
+                        </ul>
+                        <li>
+                        <a href="#"><i class="fa fa-institution"></i> Localidad<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                            </li>
+                        <li>
+                            <a href="/localidad/estado/"><i class="fa fa-institution fa-fw"></i> Estado<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/localidad/municipio/"><i class="fa fa-flag"></i> Municipio<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/localidad/empresa/"><i class="fa fa-home fa-fw"></i> Empresa<span></span></a>
+                        </li>
+                    </ul>
+                    <li>
+
+                        <a href="#"><i class="fa fa-delicious"></i> Negocio<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                            <li>
+                            <a href="/negocio/cliente/"><i class="fa fa-user fa-fw"></i>Captura de Cliente<span></span></a>
+                        </li>
+                        </li><li>
+                            <a href="/negocio/clientes/"><i class="fa fa-group fa-fw"></i> Clientes<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/negocio/cotizacion/"><i class="fa fa-dollar"></i> Cotización personal<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/negocio/informal/"><i class="fa fa-dollar"></i> Cotización informal<span></span></a>
+                        </li>
+                            </li>
+                        <li>
+                            <a href="/negocio/cotizaciones/"><i class="fa fa-list-alt"></i> Cotizaciones<span></span></a>
+                        </li>
+                    </ul>
+                    </ul>
+                    {% else %}
+                    <li>
+
+                        <a href="#"><i class="fa fa-delicious"></i> Negocio<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                            <li>
+                            <a href="/negocio/cliente/"><i class="fa fa-user fa-fw"></i>Captura de Cliente<span></span></a>
+                        </li><li>
+                            <a href="/negocio/clientes/"><i class="fa fa-group fa-fw"></i> Clientes<span></span></a>
+                        </li>
+                            </li>
+                            <li>
+                            <a href="/negocio/cotizacion/"><i class="fa fa-dollar"></i> Cotización personal<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/negocio/informal/"><i class="fa fa-dollar"></i> Cotización informal<span></span></a>
+                        </li>
+                        <li>
+                            <a href="/negocio/cotizaciones/"><i class="fa fa-list-alt"></i> Cotizaciones<span></span></a>
+                        </li>
+                    </ul>
+
+                    {% endif %}
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+{% block content %}
+{% endblock %}
+
+
+ <!-- jQuery -->
+    <script src="{% static 'js/bower_components/jquery/dist/jquery.min.js'%}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'js/bower_components/metisMenu/dist/metisMenu.min.js'%}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'js/dist/js/sb-admin-2.js'%}"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="{% static 'js/bower_components/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js' %}"></script>
+    
+    <script src="{% static 'js/operaciones.js' %}"></script>
+    <script type="text/javascript"></script>
+
+
+
+    
+</body>
+
+{% block js %}
+{% endblock %}
+
+</html>

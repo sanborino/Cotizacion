@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+
+{% block title %}
+Ingreso de cotizacion
+{% endblock %}
+
+{% block content %}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                </div>
+                
+                <form method="POST" name ="a" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-group">
+                    <div class="col-md-12">
+                        <h3 class="page-header">Captura de cotización informal </h3>
+                        <div class="col-md-6">
+                       <label>Empres:</label>{{form.empresa}}
+                       <label>Cliente:</label>{{form.cliente}}
+                       <label>Receta:</label>{{form.receta}}
+                       <label>Observaciones:</label>{{form.descripcion}}
+                       <label>Fecha de vencimiento de la cotizacion:</label>{{form.fechaFinal}}
+                       <label>Estado:</label>{{form.estado}}
+                       <br>
+                       <button type="submit" class="btn btn-outline btn-primary btn-lg btn-block" >Guardar</button><br>
+                   </form>
+                    </div>
+                    </div>
+                    </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}

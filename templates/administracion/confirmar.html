@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+
+{% block title %}
+Confirmar cierre de receta
+{% endblock %}
+
+{% block content %}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Confirmar cierre de receta y calular costo/venta</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    
+                <table>
+                    <thead>
+                        <th>Ingrediente</th>
+                        <th>Costo</th>
+                    </thead>
+                {% for i in items %}
+                <tr>
+                    <td style="width: 200px;">{{i.item}}</td>
+                    <td><input type="text" class="costos" value="{{i.valor}}" readonly></td>
+                </tr>
+                {% endfor %}
+                </table><br>
+
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-group">
+                        {{Receta_form.as_p}}
+                        <input type="button" id="sumar" class="btn btn-outline btn-primary btn-lg btn-block" value="Calcular" onClick="Venta();">
+            <button type="submit" class="btn btn-outline btn-primary btn-lg btn-block">Confirmar</button><br>
+                    </div>
+                </form>
+                    </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}

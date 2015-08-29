@@ -1,0 +1,81 @@
+{% extends "template.html" %}
+
+{% block title %}
+Cotizaciones
+{% endblock %}
+
+{% block content %}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Cotizaciones realizadas</h3></div>
+                </div>
+                    <!-- /.col-lg-12 -->
+                
+                
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Rendering engine: activate to sort column ascending">Sucursal</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 180px;" aria-label="Rendering engine: activate to sort column ascending">Fecha de elaboración</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 120px;">Nombre del cliente</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 50px;">Teléfono</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 30px;">total</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 150px;">Fecha de vencimiento</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 30px;">Estado</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 30px;">Impresión</th><b></b>
+                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 30px;">Aprobar</th><b></b>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                   
+                {% for c in cotizaciones %}
+            <tr>
+            <td>{{c.empresa}}</td>
+            <td>{{c.fechaInicial}}</td>
+            <td>{{c.cliente}}</td>
+            <td>{{c.cliente.telefono}}</td>
+            <td>{{c.total}}</td>
+            <td>{{c.fechaFinal}}</td>
+            <td>{{c.estado}}</td>
+            {% if c.total > 0.00 %}
+            <td align="center"><a href="/negocio/pdfs/{{c.id}}/" class="fa fa-print">&nbsp;Imprimir</a></td>
+                {% else %}
+            <td align="center"><a href="/negocio/pdfInformal/{{c.id}}/" class="fa fa-print">&nbsp;Imprimir</a>
+            
+            {% endif %}
+            {% if c.estado == "Pendiente" %}
+                <td align="center"><a href="/negocio/aprobaciones/{{c.id}}/" class="fa fa-check">Aprobar</a></td>
+                {% else %}
+                <td align="center"><a href="#"></a></td>
+            {% endif %}
+                
+            </tr>
+                {% endfor %}
+                    </tbody>
+                    </table><br>
+            <div class="col-md-4">
+                <a href="/negocio/cotizaciones/pendientes/" type="button" class="btn btn-outline btn-primary btn-lg btn-block">Imprimir pendientes</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/negocio/cotizaciones/vencidas/" type="button" class="btn btn-outline btn-primary btn-lg btn-block">Imprimir Vencidas</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/negocio/cotizaciones/aprobadas/" type="button" class="btn btn-outline btn-primary btn-lg btn-block">Imprimir Aprobadas</a><br>
+            </div>
+            <div class="col-lg-12">
+                <a href="/menu/" type="button" class="btn btn-outline btn-primary btn-lg btn-block">Salir</a><br>
+            </div>
+
+            </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}

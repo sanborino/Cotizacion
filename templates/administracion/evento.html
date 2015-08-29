@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+
+{% block title %}
+Ingreso de tipo de evento
+{% endblock %}
+
+{% block content %}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Registrar evento </h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="col-md-4">
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-group">
+                        <p><input name="nombre" class="form-control" placeholder="Nombre del evento"></p>
+                        <p><button type="submit" class="btn btn-outline btn-primary btn-lg btn-block" >Guardar</button></p>
+                    </div>
+                </form>
+
+                    </div>
+                    <div class="col-md-6">
+
+                      <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 30px;" aria-label="Rendering engine: activate to sort column ascending">Id</th>
+                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" style="width: 100%;">Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                   
+                {% for eventos in eventos %}
+            <tr>
+            <td>{{eventos.id}}</td>
+            <td>{{eventos.nombre}}</td>
+            </tr>
+                {% endfor %}
+                    </tbody>
+                    </table>
+              
+                <a href="/menu/" type="button" class="btn btn-outline btn-primary btn-lg btn-block">Salir</a><br>
+                    
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}
