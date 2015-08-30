@@ -15,6 +15,18 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Cotizacion.settings")
 
 application = get_wsgi_application()
 
+# Para path de windows con iis
+# import os, sys
+
+# sys.path.append('C:/inetpub/wwwroot/Cotizacion_/Cotizacion')
+# sys.path.append('C:/inetpub/wwwroot/Cotizacion_')
+
+# from django.core.wsgi import get_wsgi_application
+
+# os.environ.setdefault["DJANGO_SETTINGS_MODULE"] = "Cotizacion.settings"
+
+# application = get_wsgi_application()
+
 
 
 # sys.path = ['C:\proyecto\www', 'C:\Python27\Lib\site-packages'] + sys.path
