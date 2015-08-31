@@ -26,6 +26,9 @@ class DetalleForm(forms.ModelForm):
     	self.fields['cantidad'].widget.attrs.update({'class': 'form-control'})
         self.fields['valor'].widget.attrs.update({'class': 'form-control', 'readonly': True})
         self.fields['estado'].widget.attrs.update({'class': 'form-control', 'checked': True, 'readonly': True})
+
+        for field in self.fields.itervalues():
+            field.widget.attrs.update({'class': 'form-control'})
     	
 class EditReceta(forms.ModelForm):
     class Meta:
