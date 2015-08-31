@@ -18,8 +18,8 @@ application = get_wsgi_application()
 # Para path de windows con iis
 # import os, sys
 
-# sys.path.append('C:/inetpub/wwwroot/Cotizacion_/Cotizacion')
-# sys.path.append('C:/inetpub/wwwroot/Cotizacion_')
+# sys.path.append('C:/inetpub/wwwroot/Cotizacion/Cotizacion')
+# sys.path.append('C:/inetpub/wwwroot/Cotizacion')
 
 # from django.core.wsgi import get_wsgi_application
 
