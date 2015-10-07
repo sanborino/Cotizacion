@@ -1,5 +1,5 @@
 from django import forms
-from .models import Receta, Detalle
+from .models import Receta, Detalle, Ingrediente
 # from django.forms.extras.widgets import SelectDateWidget
 # from django.forms import widgets
 
@@ -22,7 +22,7 @@ class DetalleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
     	super(DetalleForm, self).__init__(*args, **kwargs)
         self.fields['receta'].queryset = Receta.objects.filter(estado=1)
-        self.fields['item'].widget.attrs.update({'class': 'form-control'})
+        self.fields['item'].queryset = Ingrediente.objects.order_by('nombre')
     	self.fields['cantidad'].widget.attrs.update({'class': 'form-control'})
         self.fields['valor'].widget.attrs.update({'class': 'form-control', 'readonly': True})
         self.fields['estado'].widget.attrs.update({'class': 'form-control', 'checked': True, 'readonly': True})

@@ -17,7 +17,7 @@ class Receta(models.Model):
 class Detalle(models.Model):
 	receta = models.ForeignKey(Receta)
 	item = models.ForeignKey(Ingrediente)
-	cantidad = models.DecimalField(max_digits=10, decimal_places=2)
+	cantidad = models.DecimalField(max_digits=15, decimal_places=2)
 	valor = models.DecimalField(max_digits=10, decimal_places=2)
 	estado = models.BooleanField()
 
