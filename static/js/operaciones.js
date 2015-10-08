@@ -43,7 +43,7 @@ function Totalizar()
 
 function Venta()
 {
-	var costo = document.getElementById('id_costo').toFixed(2).value;
+	var costo = document.getElementById('id_costo').value;
 	var total = (costo/0.25).toFixed(2);
 	document.getElementById('id_venta').value=total;
 }
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			$(".costos").each(function() {
 				add += Number($(this).val());
 			});
-			$("#id_costo").val(add);
+			$("#id_costo").val(add.toFixed(2));
 		});
 	});
 
