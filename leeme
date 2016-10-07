@@ -1,0 +1,4 @@
+Instalar los siguientes paquetes:
+wkthtmltopdf
+django-wkhtmltopdf
+reportlab
